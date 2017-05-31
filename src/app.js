@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import firebase from 'firebase';
 import { Button, CardSection, Spinner } from './components';
 import Login from './views/LoginForm';
 import Main from './views/Main';
+
+var Picture = require('./images/dinder.png');
 
 class App extends Component {
   state = { loggedIn: null }
@@ -19,33 +21,32 @@ class App extends Component {
 
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        this.setState({ loggedIn: true });
-      } else {
         this.setState({ loggedIn: false });
+      } else {
+        this.setState({ loggedIn: true });
       }
     });
   }
 
   renderContent() {
     switch (this.state.loggedIn) {
-      case true:
-        return <Main />
-        // return (
-        //   <CardSection>
-        //     <Button onPress={() => firebase.auth().signOut()}>
-        //       Log Out
-        //     </Button>
-        //   </CardSection>
-      // );
       case false:
+        return <Main />
+      case true:
         return <Login />;
     }
   }
 
   render() {
     return (
-      <View>
+    <View>
+      <Image 
+      style={{resizeMode: 'contain', height: 100, marginTop: 20, marginLeft: -20, backgroundColor: 'skyblue'}}
+      source={Picture}
+      />
+      <View style={{backgroundColor: 'skyblue'}}>
         {this.renderContent()}
+      </View>
       </View>
     );
   }

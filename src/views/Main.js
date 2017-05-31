@@ -882,7 +882,7 @@ class Main extends Component {
   render(){
     return (
     <View>
-      <StatusBar style={{height: 100, backgroundColor: 'black'}}/>
+      <Button onPress={() => firebase.auth().signOut()} title={'Log Out'} style={{height: 100}}/>
       <ScrollView style={{backgroundColor: 'skyblue'}}>
         {              
           this.state.restaurants.map(function(listing){

@@ -47,7 +47,7 @@ class LoginForm extends Component {
 
   render() {
     return (
-      <Card>
+      <Card style={{width: 100, marginTop: 100}}>
         <CardSection>
           <Input
             placeholder="user@email.com"
