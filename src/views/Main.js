@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
-import { StyleSheet, ScrollView, Alert, Button, Text, View, Image, ListView, Linking, TouchableOpacity} from 'react-native';
-import Container from '../components/Container';  
+import { StatusBar, StyleSheet, ScrollView, Alert, Button, Text, View, Image, ListView, Linking, TouchableOpacity} from 'react-native';
+import Container from '../components/Container';
 import firebase from 'firebase';
 
-const onButtonPress = () => {
-  Alert.alert('Button has been pressed!');
+const onButtonPress = function(item){
+  const newState = this.state.restaurants;
+  if(newState.indexOf(item) > -1) {
+    newState.splice(newState.indexOf(item), 1);
+    this.setState({restaurants: newState})
+  }
 }
 
 class Main extends Component {
@@ -877,7 +881,9 @@ class Main extends Component {
 
   render(){
     return (
-      <ScrollView>
+    <View>
+      <StatusBar style={{height: 100, backgroundColor: 'black'}}/>
+      <ScrollView style={{backgroundColor: 'skyblue'}}>
         {              
           this.state.restaurants.map(function(listing){
             return (
@@ -911,6 +917,7 @@ class Main extends Component {
           })
         }
       </ScrollView>
+    </View>
     )
   }
 }
@@ -929,7 +936,7 @@ const styles = StyleSheet.create({
     height: 400,
     marginTop: 100,
     marginBottom: 100,
-    backgroundColor: 'skyblue',
+    backgroundColor: 'white'
   },
   container: {
     flex: 1,
