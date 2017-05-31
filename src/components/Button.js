@@ -23,9 +23,8 @@ const styles = {
   },
   buttonStyle: {
     flex: 1,
-    alignSelf: 'stretch',
-    backgroundColor: '#fff',
-    borderRadius: 5,
+    backgroundColor: 'white',
+    borderRadius: 10,
     borderWidth: 1,
     borderColor: '#007aff',
     marginLeft: 5,

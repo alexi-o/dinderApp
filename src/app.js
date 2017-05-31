@@ -6,6 +6,7 @@ import Login from './views/LoginForm';
 import Main from './views/Main';
 
 var Picture = require('./images/dinder.png');
+var Picture2 = require('./images/title.jpg');
 
 class App extends Component {
   state = { loggedIn: null }
@@ -41,7 +42,7 @@ class App extends Component {
     return (
     <View>
       <Image 
-      style={{resizeMode: 'contain', height: 100, marginTop: 20, marginLeft: -20, backgroundColor: 'skyblue'}}
+      style={{resizeMode: 'contain', height: 100,  marginLeft: -20, backgroundColor: 'skyblue'}}
       source={Picture}
       />
       <View style={{backgroundColor: 'skyblue'}}>

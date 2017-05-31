@@ -881,7 +881,7 @@ class Main extends Component {
 
   render(){
     return (
-    <View>
+    <View >
       <Button onPress={() => firebase.auth().signOut()} title={'Log Out'} style={{height: 100}}/>
       <ScrollView style={{backgroundColor: 'skyblue'}}>
         {              

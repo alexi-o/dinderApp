@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, Image } from 'react-native';
 import firebase from 'firebase';
 import { Button, Card, CardSection, Input, Spinner } from '../components';
+
+var Picture2 = require('../images/title.jpg');
+
 
 class LoginForm extends Component {
   state = { email: '', password: '', error: '', loading: false };
@@ -47,7 +50,11 @@ class LoginForm extends Component {
 
   render() {
     return (
-      <Card style={{width: 100, marginTop: 100}}>
+      <Card style={{backgroundColor: 'skyblue'}}>
+      <Image
+      style={{borderColor: 'transparent', resizeMode: 'contain', backgroundColor: 'skyblue', marginLeft: 13,  height: 300, width: 350}}
+      source={Picture2}
+      />
         <CardSection>
           <Input
             placeholder="user@email.com"
@@ -68,7 +75,7 @@ class LoginForm extends Component {
           <Text style={styles.errorTextStyle}>
             {this.state.error}
           </Text>
-        <CardSection>
+        <CardSection style={{backgroundColor: 'skyblue'}}>
           {this.renderButton()}
         </CardSection>
       </Card>
