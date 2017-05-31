@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import firebase from 'firebase';
-import { Button, CardSection, Spinner } from './components/common';
-import LoginForm from './components/LoginForm';
-import Main from './components/Main';
+import { Button, CardSection, Spinner } from './components';
+import Login from './views/LoginForm';
+import Main from './views/Main';
 
 class App extends Component {
   state = { loggedIn: null }
@@ -38,7 +38,7 @@ class App extends Component {
         //   </CardSection>
       // );
       case false:
-        return <LoginForm />;
+        return <Login />;
     }
   }
 
