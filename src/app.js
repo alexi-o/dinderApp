@@ -4,6 +4,7 @@ import firebase from 'firebase';
 import { Button, CardSection, Spinner } from './components';
 import Login from './views/LoginForm';
 import Main from './views/Main';
+import Tinder from './views/Tinder';
 
 var Picture = require('./images/dinder.png');
 var Picture2 = require('./images/title.jpg');
@@ -32,7 +33,7 @@ class App extends Component {
   renderContent() {
     switch (this.state.loggedIn) {
       case false:
-        return <Main />
+        return <Tinder />
       case true:
         return <Login />;
     }

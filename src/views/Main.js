@@ -13,6 +13,9 @@ const onButtonPress = function(item){
 
 class Main extends Component {
   state = {
+    x: 0,
+    y: 0,
+
     restaurants: [
     {
       "id": "grillin-wings-and-things-denver",
@@ -878,16 +881,50 @@ class Main extends Component {
     }
   }
 }
+  setPosition(e){
+    this.setState({
+      x: this.state.x + (e.nativeEvent.pageX - this.drag.x),
+      y: this.state.y + (e.nativeEvent.pageY - this.drag.y)
+    });
+    this.drag.x + e.nativeEvent.pageX;
+    this.drag.y + e.nativeEvent.pageY;
+  }
+  resetPosition(e){
+    this.dragging = false;
+    this.setState({
+      x: 0,
+      y: 0,
+    })
+  }
+  _onStartShouldSetResonder(e){
+    this.dragging = true;
+    this.drag = {
+      x: e.nativeEvent.pageX,
+      y: e.nativeEvent.pageY
+    }
+    return true;
+  }
+  _onMoveShouldSetResonder(e) {
+    return true;
+  }
+
 
   render(){
     return (
-    <View >
-      <Button onPress={() => firebase.auth().signOut()} title={'Log Out'} style={{height: 100}}/>
+    <View>
+      <Button onPress={() => firebase.auth().signOut()} title={'Log Out'}/>
       <ScrollView style={{backgroundColor: 'skyblue'}}>
         {              
           this.state.restaurants.map(function(listing){
             return (
-            <View style={styles.card} key={listing.id}>
+            <View 
+              style={styles.card} 
+              key={listing.id}
+              onResponderMove={this.setPosition}
+              onResponderRelease={this.resetPosition}
+              onStartShouldSetResponder={this._onStartShouldSetResponder}
+              onMoveShouldSetResponder={this._onMoveShouldSetResponder}
+            >
               <Image 
                 style={{flex: 6, height: 400, width: 400}}
                 source={{uri: listing.image_url}} 
@@ -902,14 +939,12 @@ class Main extends Component {
                 <Button
                   title="Yawww!"
                   onPress={onButtonPress}
-                  containerStyle={{padding: 10, height:45, overflow:'hidden', borderRadius:4, backgroundColor: 'white'}}
-                  style={{ marginLeft: 100, fontSize: 20, color: 'green'}}
+
                 />
                 <Button
                   title="Nawww!"
                   onPress={onButtonPress}
-                  containerStyle={{ padding:10, height:45, overflow:'hidden', borderRadius:4, backgroundColor: 'white'}}
-                  style={{fontSize: 20, color: 'green'}}
+
                 />
               </View>
             </View>
