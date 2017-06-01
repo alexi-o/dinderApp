@@ -5,6 +5,8 @@ import { Button, CardSection, Spinner } from './components';
 import Login from './views/LoginForm';
 import Main from './views/Main';
 import Tinder from './views/Tinder';
+import Header1 from './components/Header1';
+import Header2 from './components/Header2';
 
 var Picture = require('./images/dinder.png');
 var Picture2 = require('./images/title.jpg');
@@ -23,33 +25,39 @@ class App extends Component {
 
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        this.setState({ loggedIn: false });
-      } else {
         this.setState({ loggedIn: true });
+      } else {
+        this.setState({ loggedIn: false });
       }
     });
   }
 
   renderContent() {
     switch (this.state.loggedIn) {
-      case false:
-        return <Tinder />
       case true:
+        return <Tinder />
+      case false:
         return <Login />;
+    }
+  }
+
+  renderHeader() {
+    switch (this.state.loggedIn) {
+      case true:
+        return <Header2 />
+      case false:
+        return <Header1 />
     }
   }
 
   render() {
     return (
     <View>
-      <Image 
-      style={{resizeMode: 'contain', height: 100,  marginLeft: -20, backgroundColor: 'skyblue'}}
-      source={Picture}
-      />
+        {this.renderHeader()}
       <View style={{backgroundColor: 'skyblue'}}>
         {this.renderContent()}
       </View>
-      </View>
+    </View>
     );
   }
 }

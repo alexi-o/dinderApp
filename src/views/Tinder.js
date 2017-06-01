@@ -1,21 +1,24 @@
 'use strict';
 
 import React from 'react';
-import {StyleSheet, Text, View, Image} from 'react-native';
-
+import { StyleSheet, Text, View, Image} from 'react-native';
+import { Button } from '../components/Button';
+import firebase from 'firebase';
 
 import SwipeCards from 'react-native-swipe-cards';
 
 let Card = React.createClass({
   render() {
-    return (
+   return (
+    <View>
       <View style={styles.card}>
         <Image style={styles.thumbnail} source={{uri: this.props.image_url}} />
-        <Text style={{fontWeight: 'bold', fontSize: 20}}>{this.props.name}</Text>
-        <Text style={{fontSize: 15}}>Rating: {this.props.rating}</Text>
-        <Text style={{fontSize: 15}}>Phone: {this.props.display_phone}</Text>
-        <Text style={{fontSize: 15}}>Distance: {this.props.distance} ft.</Text>
+        <Text style={{ fontSize: 20, fontWeight: 'bold', marginLeft: 10}}>{this.props.name}</Text>
+        <Text style={styles.text}>Rating: {this.props.rating}</Text>
+        <Text style={styles.text}>Phone: {this.props.display_phone}</Text>
+        <Text style={styles.text}>Distance: {this.props.distance} ft.</Text>
       </View>
+    </View>	
     )
   }
 })
@@ -903,19 +906,11 @@ export default React.createClass({
   },
   cardRemoved (index) {
     console.log(`The index is ${index}`);
-
     let CARD_REFRESH_LIMIT = 3
-
     if (this.state.cards.length - index <= CARD_REFRESH_LIMIT + 1) {
       console.log(`There are only ${this.state.cards.length - index - 1} cards left.`);
-
       if (!this.state.outOfCards) {
-        console.log(`Adding ${Cards2.length} more cards`)
-
-        this.setState({
-          cards: this.state.cards.concat(Cards2),
-          outOfCards: true
-        })
+      	alert('No more matches!')
       }
 
     }
@@ -959,9 +954,8 @@ const styles = StyleSheet.create({
     height: 300,
   },
   text: {
-    fontSize: 20,
-    paddingTop: 10,
-    paddingBottom: 10
+    fontSize: 15,
+    marginLeft: 10
   },
   noMoreCards: {
     flexGrow: 1,
