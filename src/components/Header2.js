@@ -12,7 +12,7 @@ class Header2 extends Component {
 	        style={{resizeMode: 'contain', height: 100, marginLeft: -20, backgroundColor: 'skyblue'}}
 	        source={Picture}
 	      />
-	  <Button onPress={() => firebase.auth().signOut()} title={'Log Out'}/>
+	  <Button onPress={() => firebase.auth().signOut()} title={'Log Out'} />
 	  </View>
 	     )
 		}
