@@ -8,6 +8,7 @@ React Native, Firebase
 
 ## Installation instructions
 ```bash
+# If you don't have React Native already:
 brew install node
 brew install watchman
 npm install -g react-native-cli
@@ -17,6 +18,6 @@ npm install -g react-native-cli
 git clone https://github.com/alexi-o/dinderApp
 cd dinderApp
 npm install
-```
 
 $ react-native run-ios
+```
