@@ -1,7 +1,6 @@
 # dinderApp
-
-![](src/images/demo.png)
 ![](src/images/demo1.png)
+![](src/images/demo.png)
 
 Dinder is a Tinder-esque app that allows users to cycle through restaurants near them and use swipe functionality to 'Like' or 'Dislike' a venue. 
 
